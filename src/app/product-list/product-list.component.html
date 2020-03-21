@@ -1,0 +1,70 @@
+<main>
+  <section class="actions">
+    <button class="btn btn-standard"
+            (click)="getProducts(50)">
+      Load 50 products
+    </button>
+    <button class="btn btn-standard"
+            (click)="getProducts(200)">
+      Load 200 products
+    </button>
+    <button class="btn btn-standard"
+            (click)="getProducts(1000)">
+      Load 1000 products
+    </button>
+    <button class="btn btn-standard"
+            (click)="getProducts(5000)">
+      Load 5000 products
+    </button>
+  </section>
+  <div class="divider"></div>
+  <section class="logs">
+    <h2 class="title logs-title">Time Logs</h2>
+    <button class="btn btn-additional"
+            (click)="clearLogs()">
+      Clear Logs
+    </button>
+    <table class="logs-table">
+      <thead>
+      <tr>
+        <th>№</th>
+        <th>Time spent for request (in seconds)</th>
+        <th>Requested quantity of products</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr class="logs-row"
+            *ngFor="let log of logs; let first = first; let index = index">
+          <td *ngIf="!first">{{index}}</td>
+          <td *ngIf="!first">{{log.timeDifference}}</td>
+          <td *ngIf="!first">{{log.productAmount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <div class="divider"></div>
+  <section class="products">
+    <h2 class="title products-title">Product List</h2>
+    <div *ngIf="(dataObserver | async) as data;">
+      <div class="products-container">
+        <div class="product" *ngFor="let product of data.products">
+          <img [src]="product.image"
+               class="product-image"
+               alt="product-image">
+          <div class="product-id">
+            <span class="product-title">Product ID:</span>
+            <p class="product-content">{{product.id}}</p>
+          </div>
+          <div class="product-name">
+            <span class="product-title">Product Name:</span>
+            <p class="product-content">{{product.name}}</p>
+          </div>
+          <div class="product-description">
+            <span class="product-title">Product Description</span>
+            <p class="product-content">{{product.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
