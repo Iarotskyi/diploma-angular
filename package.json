@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --baseHref=\"https://iarotskyi.github.io/diploma-demo/angular/index.html\"",
+    "build": "ng build --baseHref=\"https://iarotskyi.github.io/diploma-demo/angular/\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
